@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax - Text</title>
+    <style type="text/css" media="screen">
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    #ajax-text {
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Loading Text with Ajax</h3>
+        <button type="submit" id="text-button">Load Book</button>
+        <div id="ajax-text"></div>
+    </div>
+
+
+    <script type="text/javascript">
+    
+    var textContainer = document.getElementById('ajax-text');
+    var textButton = document.getElementById('text-button');
+    textButton.addEventListener('click', loadBook);
+
+    function loadBook() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'ajaxSource/book-4hours-per-week.txt', true);
+   
+        xhr.onload = function() {
+        	if(this.status == 200 && this.readyState == 4){
+        		textContainer.innerHTML = this.responseText;
+        	}else{
+        		console.log('An Error Encoutered.')
+        	}
+        }
+        
+        xhr.send();
+    }
+
+    // Two more method used for ajax loading
+    // onreadystatechange  equivalent to onload mehtod
+    // onprogress, handy when creating loading effect
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax - PHP</title>
+    <style type="text/css" media="screen">
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Ajax and PHP Combination</h3>
+        <form id="ajax-form">
+            <input type="text" name="uname" required><br>
+            <input type="email" name="uemail" required><br>
+            <input type="password" name="upassword" required><br>
+            <input type="submit" id="submit" value="login">
+        </form>
+    </div>
+
+    <script type="text/javascript">
+
+    const ajaxForm = document.getElementById('ajax-form'),
+        submitButton = document.getElementById('submit'),
+        uname = document.querySelector('#ajax-form input[name="uname"]').value,
+        uemail = document.querySelector('#ajax-form input[name="uemail"]').value,
+        upassword = document.querySelector('#ajax-form input[name="upassword"]').value;
+    
+    submitButton.addEventListener('submit', submitForm);
+
+    function submitForm(e) {
+        e.preventDefault();
+        var linkPara = 'name='+uname+'&email='+uemail+'&password='+upassword;
+        var xhr = new XMLHttpRequest();
+        
+        xhr.open('GET', 'login.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        
+        xhr.onload = function() {
+            if (this.status == 200) {
+                console.log(this.responseText);
+            } else {
+                console.log('An Error Encountered.');
+            }
+
+        }
+
+        xhr.send();
+    }
+
+    </script>
+</body>
+
+</html>

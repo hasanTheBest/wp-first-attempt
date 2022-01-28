@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax - JSON</title>
+    <style type="text/css" media="screen">
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    #ajax-json {
+        background-color: #eee;
+        box-sizing: border-box;
+        padding: 1.36rem;
+        margin-top: 3rem;
+        border-radius: 2rem;
+    }
+
+
+    .user {
+        height: 250px;
+        overflow: hidden;
+        border: 2px solid darkgray;
+        border-radius: 20px;
+        padding: 1rem;
+        box-sizing: border-box;
+        background-color: royalblue;
+        box-shadow: 0 5px 2px rgba(0,0,244, .1);
+    }
+
+    ol {
+        margin: 0;
+        padding: 0;
+    }
+
+    .user>img {
+        width: 150px;
+        height: 150px;
+        float: left;
+    }
+
+    ol>li {
+        list-style-type: none;
+        display: inline-block;
+    }
+    
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Loading JSON Data with Ajax</h3>
+        <button type="submit" id="text-button">Load User</button>
+        <div id="ajax-json"></div>
+    </div>
+    <script type="text/javascript">
+    var textContainer = document.getElementById('ajax-json');
+    var textButton = document.getElementById('text-button');
+    textButton.addEventListener('click', loadUser);
+
+    function loadUser() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://api.github.com/users', true);
+
+        xhr.onload = function() {
+            if (this.status == 200) {
+                var users = JSON.parse(this.responseText);
+                var output = '<ol>';
+                //console.log(users[0].login);
+
+                for (i in users) {
+                    output += `
+                    <li>
+                    <div class="user">
+                        <img src="${users[i].avatar_url}">
+                        <h4>${users[i].login}</h4>
+                        <a href="${users[i].repos_url}">See Repos</a>
+                    </div>
+                </li>
+                `;
+                }
+
+                output += '</ol';
+                textContainer.innerHTML = output;
+            } else {
+                console.log('An Error Encoutered.')
+            }
+        }
+
+        xhr.send();
+    }
+
+    // Two more method used for ajax loading
+    // onreadystatechange  equivalent to onload mehtod
+    // onprogress, handy when creating loading effect
+    </script>
+</body>
+
+</html>

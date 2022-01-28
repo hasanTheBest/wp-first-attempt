@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<pages>
+    <link>
+        <title>HTML a tag</title>
+        <url>https://wwwlw3schools.con/tags/tag_a.asp</url>
+    </link>
+    
+    <link>
+        <title>HTML br tag</title>
+        <url>https://wwwlw3schools.con/tags/tag_br.asp</url>
+    </link>
+    
+    <link>
+        <title>CSS background Property</title>
+        <url>https://wwwlw3schools.con/cssref/css3_pr_background.asp</url>
+    </link>
+    <link>
+        <title>CSs border Property</title>
+        <url>https://wwwlw3schools.con/cssref/pr_border.asp</url>
+    </link>
+    <link>
+        <title>JavaScript Date Object</title>
+        <url>https://wwwlw3schools.con/jsref/jsref_obj_date.asp</url>
+    </link>
+    <link>
+        <title>JavaScript Array Object</title>
+        <url>https://wwwlw3schools.con/jsref/jsref_obj_array.asp</url>
+    </link>
+</pages>
+
+

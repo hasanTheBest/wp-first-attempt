@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>PHP ajax and mysql</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            function showUser(str){
+                if(str == ""){
+                    document.getElementById("textHint").innerHTML = "";
+                    return;
+                }else{
+                    if(window.XMLHttpRequest){
+                        //code for IE7+, firefox, chrome, Safari, Opera
+                        xmlhttp = new XMLHttpRequest();
+                    }else{
+                        xmlhttp = new ActiveXObject("Microsot.XMLHTTP");
+                    }
+                     xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }    
+                };
+                xmlhttp.open("GET", "php_ajax_and_mysql.php?q="+str, true);
+                xmlhttp.send();
+               }
+               
+            } 
+        </script>
+    </head>
+    <body>
+        <form>
+            <select name="Users" onchange="showUser(this.value)">
+                <option value="">Select a person:</option>
+                <option value="1">Mahmudul Hasan</option>
+                <option value="2">Elias Ali</option>
+                <option value="3">Ziaul Haque</option>
+                <option value="4">Yahia Khan</option>
+                <option value="5">Yusuf Ali</option>
+                <option value="6">Istiak Ahmed</option>
+                <option value="7">Akbar Ali</option>
+            </select>
+        </form>
+        <div id="txtHint"><b>Person info will be listed here...</b></div>
+    </body>
+</html>

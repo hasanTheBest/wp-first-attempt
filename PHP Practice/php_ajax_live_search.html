@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>PHP Ajax Live Search</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function showResult(str){
+                if(str.length == 0){
+                    document.getElementById("livesearch").innerHTML = "";
+                    document.getElementById("livesearch").style.border = "0px";
+                    return;
+                }
+                
+            if(window.XMLHttpRequest){
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("livesearch").innerHTML = this.responseText;
+                    document.getElementById("livesearch").style.border = "1px solid green";
+                }
+            }
+            xmlhttp.open("GET", "php_ajax_live_search.php?q="+str, true);
+            xmlhttp.send();
+        }
+        </script>
+        
+    </head>
+    <body>
+        <form>
+           Live Search: <input type="text" size="30" onkeyup="showResult(this.value)">
+            <div id="livesearch"></div>
+        </form>
+    </body>
+</html>

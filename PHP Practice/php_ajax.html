@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>php_ajax testing</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            function showHint(str){
+                if(str.length == 0){
+                    document.getElementById("textHint").innerHTML = "";
+                    return;
+                }else{
+                   if(window.XMLHttpRequest){
+                       //code for IE, chrome, opera,safari
+                       xmlhttp = new XMLHttpRequest();
+                    }else{
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    xmlhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            document.getElementById("txtHint").innerHTML = this.resposeText;
+                        }
+                    };
+                    xmlhttp.open("GET", "phpAJAX.php?q="+str, true);
+                    xmlhttp.send();
+                }
+            }
+        </script>
+    </head>
+    <body>
+      <p><b>Start typing name in the input field below:</b></p>
+        <form>
+            First name: <input type="text" onkeyup="showHint(this.value)">
+        </form>
+      <p>Suggestions: <span id="txtHint"></span></p>  
+    </body>
+</html>

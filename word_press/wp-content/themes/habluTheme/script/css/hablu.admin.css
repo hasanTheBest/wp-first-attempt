@@ -1,0 +1,19 @@
+
+/*
+	======================================
+		Admin enquere stylesheet @halue
+	======================================
+*/
+.hablu-general-form,
+.hablu-sidebar-preview{display: inline-block; float: left;}
+
+.hablu-sidebar-preview{width: 200px; background-color: #1F1F1F; text-align: center; padding: 20px; margin-right: 20px;}
+.hablu-sidebar{display: block; text-align: center;}
+h1.hablu-username,
+h3.hablu-description{font-weight: 100; color: #fff;}
+h1.hablu-username{margin-bottom: 10px; font-size: 24px;}
+h3.hablu-description{margin-bottom: 20px; font-size: 13px;}
+.image-container{width: 100%; overflow: hidden; text-align: center; display: block;}
+.profile-picture{width: 122px;height: 122px;overflow: hidden;margin: 20px auto;
+	background-repeat: no-repeat;background-position: center center;-webkit-background-size: cover;
+	background-size: cover;border-radius: 50%;}

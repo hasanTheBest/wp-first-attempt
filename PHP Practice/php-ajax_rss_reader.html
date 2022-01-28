@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>PHP Ajax RSS Reader</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            function showRss(str){
+                if(str.length == 0){
+                    document.getElementById("rssOutput").innerHTML = "";
+                    return ;
+                }
+                
+                if(window.XMLHttpRequest){
+                    xmlhttp = new XMLHttpRequest();
+                }else{
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        document.getElementById("rssOutput").innerHTML = this.responseText;
+                    }
+                }
+                
+                xmlhttp.open("GET", "php_ajax_rss_reader.php?q="+str,true);
+                xmlhttp.send();
+            }
+        </script>
+        
+    </head>
+    <body>
+        <form>
+            <select onchange ="showRss(this.value)">
+                <option value="">Select and RSS-fed :</option>
+                <option value="Google">Google News</option>
+                <option value="NBC">NBC News</option>
+                <option value="BBC">BBC News</option>
+            </select>
+            <br>
+            <div id="rssOutput">RSS-fed will be listed here ....</div>
+        </form>
+    </body>
+</html>
